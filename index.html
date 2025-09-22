@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Baheer Safi -- AI Engineer • Software • Cybersecurity</title>
     <meta name="description"
         content="Portfolio of Baheer Safi -- AI Engineer, Software Developer, and Cybersecurity Specialist.">
     <meta name="theme-color" content="#0ef">
+
     <style>
         :root {
             --bg: #070b12;
@@ -77,7 +78,6 @@
             box-shadow: 0 0 0 3px rgba(14, 255, 255, .35), 0 0 0 6px rgba(14, 255, 255, .12)
         }
 
-        /* Layout helpers */
         .container {
             max-width: var(--maxw);
             margin: 0 auto;
@@ -189,7 +189,7 @@
             }
         }
 
-        /* Background */
+        /* Background + canvas */
         .bg {
             position: fixed;
             inset: 0;
@@ -205,7 +205,7 @@
             pointer-events: none
         }
 
-        /* Nav */
+        /* Header / Nav */
         header.nav {
             position: sticky;
             top: 0;
@@ -218,7 +218,7 @@
         .nav-inner {
             max-width: var(--maxw);
             margin: 0 auto;
-            padding: 12px 16px;
+            padding: 10px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -262,32 +262,47 @@
             text-decoration: none
         }
 
-        /* Mobile nav tweaks */
         .nav-toggle {
             display: none
         }
 
+        /* Mobile-first nav improvements */
         @media (max-width:720px) {
             .nav-inner {
-                flex-wrap: wrap
+                flex-wrap: nowrap
             }
 
             .nav-toggle {
                 display: inline-flex;
                 align-items: center;
                 gap: 8px;
-                padding: 8px 12px;
+                padding: 10px 12px;
                 border-radius: 10px;
                 border: 1px solid rgba(255, 255, 255, .12);
-                background: rgba(255, 255, 255, .04);
+                background: rgba(255, 255, 255, .06);
                 color: var(--text);
                 font-weight: 800;
                 cursor: pointer
             }
 
             .nav-links {
+                position: fixed;
+                top: 56px;
+                left: 0;
+                right: 0;
+                display: none;
+                flex-direction: column;
+                gap: 8px;
+                padding: 10px 14px 14px;
+                background: rgba(7, 11, 18, .95);
+                backdrop-filter: blur(8px);
+                border-bottom: 1px solid rgba(255, 255, 255, .08)
+            }
+
+            .nav-links a {
                 width: 100%;
-                display: none
+                padding: 12px;
+                border-radius: 12px
             }
 
             .nav-links.open {
@@ -306,18 +321,10 @@
             align-items: center
         }
 
-        @media (max-width:1024px) {
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding-top: 40px
-            }
-        }
-
         .hero-left {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 16px;
             justify-content: center
         }
 
@@ -332,7 +339,7 @@
         h1 {
             margin: 0;
             font-size: clamp(28px, 5vw, 58px);
-            line-height: 1.06;
+            line-height: 1.08;
             background: linear-gradient(90deg, #fff, #a8f7ff 40%, #cbb6ff);
             -webkit-background-clip: text;
             background-clip: text;
@@ -385,7 +392,7 @@
         .trust {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
             flex-wrap: wrap;
             margin-top: 8px;
             color: var(--muted);
@@ -474,6 +481,47 @@
             transform: rotateX(-90deg) translateZ(50%)
         }
 
+        /* Mobile-first hero stacking and subtle layout changes */
+        @media (max-width:1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding-top: 40px
+            }
+
+            .hero-right {
+                order: -1;
+                min-height: 220px
+            }
+        }
+
+        @media (max-width:520px) {
+            .hero {
+                padding-top: 22px
+            }
+
+            .pre {
+                font-size: 11px
+            }
+
+            h1 {
+                font-size: clamp(26px, 8vw, 36px)
+            }
+
+            .subtitle {
+                font-size: 14px
+            }
+
+            .chips {
+                gap: 6px
+            }
+
+            .chip {
+                font-size: 11px;
+                padding: 5px 8px
+            }
+        }
+
         main {
             max-width: var(--maxw);
             margin: 0 auto;
@@ -481,8 +529,8 @@
         }
 
         section {
-            margin: 28px 0 18px;
-            padding: 24px;
+            margin: 22px 0 16px;
+            padding: 20px;
             border-radius: var(--radius);
             background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
             border: 1px solid rgba(255, 255, 255, .08);
@@ -491,7 +539,7 @@
 
         section h2 {
             margin: 0 0 12px;
-            font-size: clamp(20px, 3.4vw, 30px)
+            font-size: clamp(20px, 4.8vw, 30px)
         }
 
         .grid {
@@ -577,6 +625,17 @@
             border: 1px solid rgba(14, 255, 255, .28)
         }
 
+        @media (max-width:520px) {
+            .skills {
+                gap: 8px
+            }
+
+            .tag {
+                font-size: 11px;
+                padding: 6px 8px
+            }
+        }
+
         .timeline {
             display: grid;
             gap: 12px
@@ -591,13 +650,13 @@
             border: 1px dashed rgba(255, 255, 255, .12)
         }
 
+        /* Projects grid -> mobile-friendly cards (one-column, larger tap targets) */
         .projects {
             display: grid;
-            gap: 16px;
+            gap: 14px;
             grid-template-columns: repeat(12, 1fr)
         }
 
-        /* 2-up on large, 1-up on tablet/mobile */
         .projects>.project {
             grid-column: span 6
         }
@@ -638,19 +697,19 @@
         .project .foot {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             margin-top: 12px;
             flex-wrap: wrap
         }
 
         .link-btn {
-            padding: 10px 12px;
+            padding: 12px 14px;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, .14);
             background: rgba(255, 255, 255, .05);
             color: #dff9ff;
             font-weight: 800;
-            font-size: 12px;
+            font-size: 13px;
             transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease
         }
 
@@ -741,7 +800,7 @@
             margin-top: 6px
         }
 
-        /* Certifications table */
+        /* Certifications table -> responsive stack */
         .certs-table {
             width: 100%;
             border-collapse: separate;
@@ -830,7 +889,7 @@
         }
 
         .zoom-btn {
-            padding: 8px 12px;
+            padding: 10px 12px;
             border-radius: 10px;
             border: 1px solid rgba(14, 255, 255, .35);
             background: rgba(14, 255, 255, .1);
@@ -840,7 +899,7 @@
             cursor: pointer
         }
 
-        /* Certs: responsive stack on tablets/phones */
+        /* Mobile certs: stacked cards look */
         @media (max-width:900px) {
             .cert-media {
                 grid-template-columns: 88px 1fr
@@ -949,7 +1008,7 @@
             border: 1px solid rgba(255, 255, 255, .12)
         }
 
-        /* Small screens fine-tuning */
+        /* Mobile tweaks: reduce padding, bigger touch targets, hide heavy visuals if needed */
         @media (max-width:520px) {
             .hidemb {
                 display: none
@@ -958,15 +1017,45 @@
             .btn,
             .link-btn,
             .zoom-btn {
-                font-size: 13px
+                font-size: 14px
             }
 
             section {
-                padding: 18px
+                padding: 16px
             }
 
             .project .foot span {
                 font-size: 12px
+            }
+        }
+
+        /* Very small phones (≤360px) */
+        @media (max-width:360px) {
+            .nav-links {
+                top: 52px
+            }
+
+            .link-btn,
+            .btn {
+                padding: 10px 12px
+            }
+
+            .chip {
+                padding: 4px 8px
+            }
+
+            .tag {
+                padding: 5px 7px
+            }
+        }
+
+        /* Improve tap targets spacing on mobile */
+        @media (pointer:coarse) {
+
+            .link-btn,
+            .btn,
+            .zoom-btn {
+                min-height: 44px
             }
         }
     </style>
@@ -999,7 +1088,6 @@
                 <div>Baheer Safi</div>
             </div>
 
-            <!-- Mobile menu toggle -->
             <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">
                 Menu
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -1018,7 +1106,19 @@
         </div>
     </header>
 
+    <!-- Mobile-first hero: visual first, then text -->
     <section class="hero">
+        <div class="hero-right" aria-hidden="true">
+            <div class="cube">
+                <div class="face">AI</div>
+                <div class="face">ML</div>
+                <div class="face">SEC</div>
+                <div class="face">CODE</div>
+                <div class="face">DATA</div>
+                <div class="face">OPS</div>
+            </div>
+        </div>
+
         <div class="hero-left">
             <div class="pre">AI Engineer • Software • Cybersecurity</div>
             <h1>Build intelligent, secure, high‑impact systems</h1>
@@ -1038,16 +1138,6 @@
                     <span class="chip">GSDC</span>
                     <span class="chip">English Diploma</span>
                 </div>
-            </div>
-        </div>
-        <div class="hero-right" aria-hidden="true">
-            <div class="cube">
-                <div class="face">AI</div>
-                <div class="face">ML</div>
-                <div class="face">SEC</div>
-                <div class="face">CODE</div>
-                <div class="face">DATA</div>
-                <div class="face">OPS</div>
             </div>
         </div>
     </section>
@@ -1134,7 +1224,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     <!-- ISC2 -->
                     <tr class="cert-row">
                         <td data-label="Certificate">
@@ -1315,7 +1404,6 @@
                             <a class="link-btn" href="img/six.png" download>Download</a>
                         </td>
                     </tr>
-
                 </tbody>
             </table>
         </section>
@@ -1452,13 +1540,10 @@
             const bar = document.getElementById('loaderBar');
             const note = document.getElementById('loaderNote');
             const progressEl = document.querySelector('.progress');
-
-            let progress = 0;
-            let done = false;
-            let raf;
+            let progress = 0, done = false, raf;
             const startTime = performance.now();
-            const MIN_SHOW = 700;
-            const TIMEOUT = 7000;
+            const MIN_SHOW = 600;
+            const TIMEOUT = 6000;
 
             function setProgress(p, msg) {
                 progress = Math.max(progress, Math.min(100, p));
@@ -1476,31 +1561,27 @@
             }
             raf = requestAnimationFrame(tick);
 
-            setTimeout(() => { simStep = 1; note.textContent = 'Preparing canvas effects'; }, 300);
-            setTimeout(() => { simStep = 2; note.textContent = 'Optimizing UI layers'; }, 880);
-            setTimeout(() => { simStep = 3; note.textContent = 'Starting application'; }, 1450);
+            setTimeout(() => { simStep = 1; note.textContent = 'Preparing canvas effects' }, 300);
+            setTimeout(() => { simStep = 2; note.textContent = 'Optimizing UI layers' }, 880);
+            setTimeout(() => { simStep = 3; note.textContent = 'Starting application' }, 1450);
 
-            const readySignals = { dom: false, canvas: false, fonts: false };
+            const ready = { dom: false, canvas: false, fonts: false };
 
             if (document.readyState === 'complete' || document.readyState === 'interactive') {
-                readySignals.dom = true;
+                ready.dom = true;
             } else {
-                document.addEventListener('DOMContentLoaded', () => { readySignals.dom = true; setProgress(70); maybeFinish(); });
+                document.addEventListener('DOMContentLoaded', () => { ready.dom = true; setProgress(70); maybeFinish(); });
             }
 
             if ('fonts' in document) {
-                document.fonts.ready.then(() => { readySignals.fonts = true; setProgress(85); maybeFinish(); }).catch(() => { readySignals.fonts = true; maybeFinish(); });
+                document.fonts.ready.then(() => { ready.fonts = true; setProgress(85); maybeFinish(); }).catch(() => { ready.fonts = true; maybeFinish(); });
             } else {
-                readySignals.fonts = true;
+                ready.fonts = true;
             }
 
-            window.__fxReady = function () {
-                readySignals.canvas = true;
-                setProgress(96);
-                maybeFinish();
-            };
+            window.__fxReady = function () { ready.canvas = true; setProgress(96); maybeFinish(); };
 
-            function allReady() { return readySignals.dom && readySignals.canvas && readySignals.fonts; }
+            function allReady() { return ready.dom && ready.canvas && ready.fonts; }
             function maybeFinish() {
                 if (!allReady()) return;
                 const elapsed = performance.now() - startTime;
@@ -1530,7 +1611,7 @@
         const ctx = canvas.getContext('2d', { alpha: true });
         let w, h, dpr;
         const nodes = [];
-        const MAX = 72;
+        const MAX = 64; // slightly fewer nodes for mobile perf
 
         function resize() {
             dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -1542,12 +1623,7 @@
         function init() {
             nodes.length = 0;
             for (let i = 0; i < MAX; i++) {
-                nodes.push({
-                    x: Math.random() * w,
-                    y: Math.random() * h,
-                    vx: (Math.random() * 2 - 1) * 0.15 * dpr,
-                    vy: (Math.random() * 2 - 1) * 0.15 * dpr
-                });
+                nodes.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() * 2 - 1) * 0.15 * dpr, vy: (Math.random() * 2 - 1) * 0.15 * dpr });
             }
         }
         function tick() {
@@ -1557,14 +1633,15 @@
                 if (n.x < 0 || n.x > w) n.vx *= -1;
                 if (n.y < 0 || n.y > h) n.vy *= -1;
             }
+            const thresh = Math.min(w, h) / 8;
             for (let i = 0; i < nodes.length; i++) {
                 const a = nodes[i];
                 for (let j = i + 1; j < nodes.length; j++) {
                     const b = nodes[j];
                     const dx = a.x - b.x, dy = a.y - b.y;
                     const dist = Math.hypot(dx, dy);
-                    if (dist < 160 * dpr) {
-                        const alpha = (1 - dist / (160 * dpr)) * 0.5;
+                    if (dist < thresh) {
+                        const alpha = (1 - dist / thresh) * 0.5;
                         ctx.strokeStyle = `rgba(14,255,255,${alpha})`;
                         ctx.lineWidth = 1 * dpr;
                         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
@@ -1578,12 +1655,8 @@
             requestAnimationFrame(tick);
         }
 
-        // Debounced resize for performance
         let resizeTO;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTO);
-            resizeTO = setTimeout(() => { resize(); init(); }, 120);
-        });
+        window.addEventListener('resize', () => { clearTimeout(resizeTO); resizeTO = setTimeout(() => { resize(); init(); }, 120); });
         resize(); init();
         requestAnimationFrame(tick);
         if (typeof window.__fxReady === 'function') { window.__fxReady(); }
@@ -1596,7 +1669,7 @@
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Card hover glow follow
+        // Card hover glow follow (fallback safe on touch)
         document.querySelectorAll('.card').forEach(card => {
             const glow = card.querySelector('.glow');
             card.addEventListener('pointermove', (e) => {
@@ -1624,7 +1697,7 @@
         // Current year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Smooth scroll for internal links
+        // Smooth scroll for internal links + auto-close mobile nav
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 const id = a.getAttribute('href').slice(1);
@@ -1632,7 +1705,6 @@
                 if (el) {
                     e.preventDefault();
                     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Close mobile nav after click
                     const nav = document.getElementById('primaryNav');
                     const toggle = document.getElementById('navToggle');
                     if (nav && nav.classList.contains('open')) {
@@ -1670,12 +1742,8 @@
         });
 
         lbClose.addEventListener('click', () => lb.classList.remove('show'));
-        lb.addEventListener('click', (e) => {
-            if (e.target === lb) lb.classList.remove('show');
-        });
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') lb.classList.remove('show');
-        });
+        lb.addEventListener('click', (e) => { if (e.target === lb) lb.classList.remove('show'); });
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('show'); });
     </script>
 </body>
 
