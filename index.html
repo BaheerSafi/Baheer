@@ -698,6 +698,175 @@
             color: var(--muted);
             margin-top: 6px;
         }
+
+        /* Certifications table (advanced & modern) */
+        .certs-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+            border: 1px solid rgba(255, 255, 255, .08);
+            box-shadow: var(--shadow);
+        }
+
+        .certs-table thead th {
+            text-align: left;
+            font-weight: 900;
+            letter-spacing: .3px;
+            padding: 14px 14px;
+            font-size: 14px;
+            background: linear-gradient(180deg, rgba(14, 255, 255, .12), rgba(14, 255, 255, .06));
+            color: #e6fbff;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .certs-table tbody td {
+            padding: 14px;
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            vertical-align: top;
+        }
+
+        .cert-row {
+            transition: background .25s ease, transform .2s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .cert-row:hover {
+            background: rgba(14, 255, 255, .06);
+        }
+
+        .cert-media {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .cert-thumb {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(255, 255, 255, .03);
+            aspect-ratio: 16/10;
+        }
+
+        .cert-name {
+            font-weight: 900;
+        }
+
+        .cert-org {
+            color: #bfefff;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: .2px;
+        }
+
+        .cert-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .16);
+            background: rgba(255, 255, 255, .05);
+            font-weight: 800;
+            font-size: 11px;
+            color: #dff9ff;
+        }
+
+        .action-cell {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .zoom-btn {
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(14, 255, 255, .35);
+            background: rgba(14, 255, 255, .1);
+            color: #e6fbff;
+            font-weight: 800;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 8, 14, .8);
+            display: none;
+            place-items: center;
+            z-index: 1001;
+            padding: 20px;
+        }
+
+        .lightbox.show {
+            display: grid;
+        }
+
+        .lightbox-inner {
+            width: min(980px, 96vw);
+            max-height: 90vh;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .03));
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: grid;
+            grid-template-rows: auto 1fr;
+        }
+
+        .lightbox-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            gap: 10px;
+        }
+
+        .lightbox-title {
+            font-weight: 900;
+        }
+
+        .lb-close {
+            border: 0;
+            background: rgba(255, 255, 255, .08);
+            color: var(--text);
+            border-radius: 10px;
+            padding: 8px 10px;
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .lightbox-body {
+            padding: 10px;
+            overflow: auto;
+            background: rgba(0, 0, 0, .2);
+        }
+
+        .lightbox-body img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, .12);
+        }
+
+        @media (max-width:680px) {
+            .cert-media {
+                grid-template-columns: 88px 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -832,35 +1001,175 @@
             </div>
         </section>
 
+        <!-- Modern Certifications Table -->
         <section id="certs" class="reveal">
             <h2>Certifications</h2>
-            <div class="grid">
-                <div class="col-4 card">
-                    <div class="glow"></div>
-                    <strong>NVIDIA AI</strong>
-                    <div class="muted">Foundations for accelerated AI</div>
-                </div>
-                <div class="col-4 card">
-                    <div class="glow"></div>
-                    <strong>GIAC</strong>
-                    <div class="muted">Global Information Assurance Certification</div>
-                </div>
-                <div class="col-4 card">
-                    <div class="glow"></div>
-                    <strong>CEH</strong>
-                    <div class="muted">Certified Ethical Hacker</div>
-                </div>
-                <div class="col-4 card">
-                    <div class="glow"></div>
-                    <strong>GSDC</strong>
-                    <div class="muted">Global Skills Development Council</div>
-                </div>
-                <div class="col-4 card">
-                    <div class="glow"></div>
-                    <strong>English Diploma</strong>
-                    <div class="muted">Muslim English Language Institute</div>
-                </div>
+
+            <div class="muted" style="margin-bottom:10px">
+                Tap a certificate to preview in full size. All images are stored locally: one.png (ISC2), two.png
+                (NVIDIA AI), three.png (GIAC), four.png (GSDC), five.png (CEH).
             </div>
+
+            <table class="certs-table" role="table" aria-label="Certifications">
+                <thead>
+                    <tr>
+                        <th scope="col">Certificate</th>
+                        <th scope="col">Issuer</th>
+                        <th scope="col">Details</th>
+                        <th scope="col">Issued</th>
+                        <th scope="col">Validity</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- ISC2 -->
+                    <tr class="cert-row">
+                        <td>
+                            <div class="cert-media">
+                                <div class="cert-thumb">
+                                    <img src="one.png" alt="ISC2 Certified in Cybersecurity certificate thumbnail">
+                                </div>
+                                <div>
+                                    <div class="cert-name">Certified in Cybersecurity (CC)</div>
+                                    <div class="cert-org">ISC2</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>International Information System Security Certification Consortium (ISC2)</td>
+                        <td>
+                            <div class="cert-meta">
+                                <span class="pill">Domain: Cybersecurity Fundamentals</span>
+                                <span class="pill">Credential: CC</span>
+                                <span class="pill">Status: Active</span>
+                            </div>
+                        </td>
+                        <td>Sep 1, 2023</td>
+                        <td>Through Aug 31, 2026</td>
+                        <td class="action-cell">
+                            <button class="zoom-btn" data-lb="one.png"
+                                data-title="ISC2 — Certified in Cybersecurity (CC)">Preview</button>
+                            <a class="link-btn" href="one.png" download>Download</a>
+                        </td>
+                    </tr>
+
+                    <!-- NVIDIA AI -->
+                    <tr class="cert-row">
+                        <td>
+                            <div class="cert-media">
+                                <div class="cert-thumb">
+                                    <img src="two.png" alt="NVIDIA AI certificate thumbnail">
+                                </div>
+                                <div>
+                                    <div class="cert-name">Certificate of Accomplishment</div>
+                                    <div class="cert-org">NVIDIA • LangChain</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>NVIDIA</td>
+                        <td>
+                            <div class="cert-meta">
+                                <span class="pill">Generative AI Agents Contest</span>
+                                <span class="pill">AI Engineering</span>
+                            </div>
+                        </td>
+                        <td>Jul 31, 2024</td>
+                        <td>Does not expire</td>
+                        <td class="action-cell">
+                            <button class="zoom-btn" data-lb="two.png"
+                                data-title="NVIDIA — Certificate of Accomplishment">Preview</button>
+                            <a class="link-btn" href="two.png" download>Download</a>
+                        </td>
+                    </tr>
+
+                    <!-- GIAC Penetration Tester -->
+                    <tr class="cert-row">
+                        <td>
+                            <div class="cert-media">
+                                <div class="cert-thumb">
+                                    <img src="three.png" alt="GIAC Penetration Tester certificate thumbnail">
+                                </div>
+                                <div>
+                                    <div class="cert-name">GIAC Penetration Tester (GPEN)</div>
+                                    <div class="cert-org">GIAC</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Global Information Assurance Certification (GIAC)</td>
+                        <td>
+                            <div class="cert-meta">
+                                <span class="pill">Pentesting</span>
+                                <span class="pill">ID: 18674</span>
+                            </div>
+                        </td>
+                        <td>Sep 10, 2023</td>
+                        <td>Valid through Sep 30, 2027</td>
+                        <td class="action-cell">
+                            <button class="zoom-btn" data-lb="three.png"
+                                data-title="GIAC — Penetration Tester (GPEN)">Preview</button>
+                            <a class="link-btn" href="three.png" download>Download</a>
+                        </td>
+                    </tr>
+
+                    <!-- GSDC Full Stack Developer -->
+                    <tr class="cert-row">
+                        <td>
+                            <div class="cert-media">
+                                <div class="cert-thumb">
+                                    <img src="four.png" alt="GSDC Full Stack Developer certificate thumbnail">
+                                </div>
+                                <div>
+                                    <div class="cert-name">Full Stack Developer Certificate</div>
+                                    <div class="cert-org">GSDC</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Global Skill Development Council (GSDC)</td>
+                        <td>
+                            <div class="cert-meta">
+                                <span class="pill">ID: 656467464</span>
+                                <span class="pill">Software Engineering</span>
+                            </div>
+                        </td>
+                        <td>May 9, 2024</td>
+                        <td>Does not expire</td>
+                        <td class="action-cell">
+                            <button class="zoom-btn" data-lb="four.png"
+                                data-title="GSDC — Full Stack Developer">Preview</button>
+                            <a class="link-btn" href="four.png" download>Download</a>
+                        </td>
+                    </tr>
+
+                    <!-- CEH -->
+                    <tr class="cert-row">
+                        <td>
+                            <div class="cert-media">
+                                <div class="cert-thumb">
+                                    <img src="five.png" alt="EC-Council CEH certificate thumbnail">
+                                </div>
+                                <div>
+                                    <div class="cert-name">Certified Ethical Hacker (CEH)</div>
+                                    <div class="cert-org">EC‑Council</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>EC‑Council</td>
+                        <td>
+                            <div class="cert-meta">
+                                <span class="pill">Certification No: ECC8025614379</span>
+                                <span class="pill">Offensive Security</span>
+                            </div>
+                        </td>
+                        <td>Jul 25, 2024</td>
+                        <td>Expires Jul 24, 2027</td>
+                        <td class="action-cell">
+                            <button class="zoom-btn" data-lb="five.png"
+                                data-title="EC‑Council — Certified Ethical Hacker (CEH)">Preview</button>
+                            <a class="link-btn" href="five.png" download>Download</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <section id="projects" class="reveal">
@@ -878,7 +1187,7 @@
                     </div>
                     <div class="foot">
                         <a class="link-btn primary"
-                            href="https://github.com/USERNAME/REPO/releases/download/v1.0.0/BaheerAI-Setup.exe" download
+                            href="https://github.com/USERNAME/REPO/releases/download/v1.0.1/BaheerAI.exe" download
                             rel="noopener">Download .exe</a>
                         <span class="muted">Windows • 64‑bit</span>
                     </div>
@@ -896,14 +1205,14 @@
                     </div>
                     <div class="foot">
                         <a class="link-btn primary"
-                            href="https://github.com/USERNAME/REPO/releases/download/v1.0.0/Calculator-Setup.exe"
+                            href="https://github.com/BaheerSafi/Baheer/releases/download/v1.0.0/baheer.calculator.exe"
                             download rel="noopener">Download .exe</a>
                         <span class="muted">Windows • 64‑bit</span>
                     </div>
                 </div>
             </div>
             <p class="muted" style="margin-top:10px">
-                Note: Installers are hosted on GitHub Releases. Replace the links with your actual release URLs.
+                :)
             </p>
         </section>
 
@@ -920,7 +1229,7 @@
             <div class="warn-steps">
                 <div class="warn-col card">
                     <div class="glow"></div>
-                    <strong>Step 1 — Click “More info”</strong>
+                    <strong>Step 1 -- Click “More info”</strong>
                     <p class="muted">On the blue SmartScreen dialog, select “More info”.</p>
                     <div class="img-frame">
                         <img src="1.png" alt="SmartScreen dialog highlighting the 'More info' link">
@@ -930,7 +1239,7 @@
 
                 <div class="warn-col card">
                     <div class="glow"></div>
-                    <strong>Step 2 — Click “Run anyway”</strong>
+                    <strong>Step 2 -- Click “Run anyway”</strong>
                     <p class="muted">
                         After expanding details, click “Run anyway” to continue the installation.
                     </p>
@@ -976,6 +1285,19 @@
 
     <div class="footer">
         © <span id="year"></span> Baheer Safi. All rights reserved.
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-labelledby="lbTitle">
+        <div class="lightbox-inner">
+            <div class="lightbox-head">
+                <div class="lightbox-title" id="lbTitle">Preview</div>
+                <button class="lb-close" id="lbClose" aria-label="Close preview">Close</button>
+            </div>
+            <div class="lightbox-body">
+                <img id="lbImg" src="" alt="Certificate full preview">
+            </div>
+        </div>
     </div>
 
     <script>
@@ -1162,6 +1484,30 @@
                     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        // Certifications lightbox
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        const lbClose = document.getElementById('lbClose');
+        const lbTitle = document.getElementById('lbTitle');
+
+        document.querySelectorAll('.zoom-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const src = btn.getAttribute('data-lb');
+                const title = btn.getAttribute('data-title') || 'Preview';
+                lbImg.src = src;
+                lbTitle.textContent = title;
+                lb.classList.add('show');
+            });
+        });
+
+        lbClose.addEventListener('click', () => lb.classList.remove('show'));
+        lb.addEventListener('click', (e) => {
+            if (e.target === lb) lb.classList.remove('show');
+        });
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') lb.classList.remove('show');
         });
     </script>
 </body>
